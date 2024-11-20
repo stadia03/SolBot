@@ -9,7 +9,7 @@ export default function Login() {
     const password = (document.getElementById('password') as HTMLInputElement).value;
 
     try {
-      const response = await axios.post('http://localhost:3600/auth/signin', {
+      const response = await axios.post('https://sol-bot-lake.vercel.app/auth/signin', {
         email,
         password,
       }, {

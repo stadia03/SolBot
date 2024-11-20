@@ -19,7 +19,7 @@ export default function Home() {
 
       try {
         const response = await axios.get(
-          "http://localhost:3600/api/v1/tnx/getUser",
+          "https://sol-bot-lake.vercel.app/api/v1/tnx/getUser",
           {
             headers: {
               "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default function Home() {
     // const key = (document.getElementById("key") as HTMLInputElement).value;
     
     const response = await axios.post(
-      "http://localhost:3600/api/v1/tnx/updateKey",
+      "https://sol-bot-lake.vercel.app/api/v1/tnx/updateKey",
       {
         email: useUserStore.getState().email,
         key: privateKey,

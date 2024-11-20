@@ -9,7 +9,7 @@ export default function Register() {
     const password = (document.getElementById('password') as HTMLInputElement).value;
     const privateKey = (document.getElementById('pvtKey') as HTMLInputElement).value;
     try {
-      const response = await axios.post('http://localhost:3600/auth/signup', {
+      const response = await axios.post('https://sol-bot-lake.vercel.app/auth/signup', {
         username,
         email,
         password,

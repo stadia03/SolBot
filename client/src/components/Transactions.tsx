@@ -44,7 +44,7 @@ export default function Transactions() {
     });
     const token = localStorage.getItem("token");
     const response = await axios.post(
-      "http://localhost:3600/api/v1/tnx/sign",
+      "https://sol-bot-lake.vercel.app/api/v1/tnx/sign",
       {
         tnx: serializedTx,
         email: useUserStore.getState().email,
