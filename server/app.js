@@ -35,6 +35,7 @@ mongoose.connect(process.env.mongo_URL,{
 })
 
 
+export default app;
 
 
 
