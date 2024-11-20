@@ -23,10 +23,10 @@ mongoose.connect(process.env.mongo_URL,{
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(()=>{
-  console.log("DB connected");
-  app.listen(process.env.PORT, ()=> console.log(`Listening on ${process.env.PORT}`))
-})
+// .then(()=>{
+//   console.log("DB connected");
+//   app.listen(process.env.PORT, ()=> console.log(`Listening on ${process.env.PORT}`))
+// })
 
 .catch((err)=>{
   console.log(err);
