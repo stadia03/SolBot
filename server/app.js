@@ -12,7 +12,9 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
-
+app.get('/', (req, res) => {
+  res.status(200).send('Server is running');
+});
 app.use('/api/v1/tnx',tnxRoutes);
 app.use('/auth', authRoutes); 
 
