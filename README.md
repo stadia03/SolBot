@@ -6,53 +6,36 @@ LIVE LINK: https://solbot-two.vercel.app/
 
 ![image](https://github.com/user-attachments/assets/1fdb7d32-6f2b-494f-bd00-d413e4eed02a)
 
+# SolBot 🚀  
+A bot that simplifies transactions on the Solana blockchain by signing transactions on behalf of users. With SolBot, users can send SOL effortlessly without manually signing transactions every time.
 
-Features of SolBot
-Keyless Transactions: Users don't need to manually sign transactions with their private keys every time. The bot handles the signing process, reducing user friction.
+---
 
-Secure Private Key Management: If SolBot holds users' private keys, it must have robust encryption and secure storage mechanisms to protect against misuse or leaks.
+## Features ✨
+- **Keyless Transactions**: SolBot signs transactions programmatically, removing the need for users to manage private keys manually.
+- **Secure Signing**: Transactions are authorized securely with user authentication mechanisms.
+- **Effortless SOL Transfers**: Send SOL directly from the app without interacting with external wallets.
+- **Public Key Management**: Automatically derives and displays your public key for easy access.
 
-Automated Transactions: Users can send SOL (Solana cryptocurrency) directly by interacting with SolBot, saving time and effort.
+---
 
-Authorization Mechanism: The integration of user tokens (e.g., localStorage.getItem("token")) suggests that transactions are authorized based on user authentication, ensuring that only verified users can initiate transfers.
+## How It Works ⚙️
+1. **Authentication**:  
+   Users are authenticated with a token (e.g., JWT) and linked to their unique account.
 
-How It Likely Works
-User Authentication:
-SolBot authenticates users via tokens (JWT or similar) to link transactions to a specific account.
+2. **Transaction Signing**:  
+   SolBot uses the user’s private key to:
+   - Derive the public key.
+   - Sign transactions programmatically.
+   - Submit transactions to the Solana blockchain.
 
-Private Key Usage:
-The private key is either provided by the user or securely stored server-side. Using the private key, SolBot:
+3. **Integration**:  
+   Client communicates with SolBot’s backend API to create, sign, and broadcast transactions.
 
-Derives the public key.
-Signs transactions programmatically.
-Transaction Signing:
-SolBot creates a transaction object (e.g., Solana's Transaction), adds the required instructions, signs it with the private key, and submits it to the Solana blockchain.
+---
 
-Client-Server Communication:
-The client sends transaction data to a backend API (/api/v1/tnx/sign), where SolBot finalizes and broadcasts the transaction.
-
-Advantages
-Convenience: Users don’t have to deal with wallets or manually approve transactions every time.
-Efficiency: Transactions are executed quickly without the need for user intervention.
-Integration Potential: SolBot can be integrated into dApps for smooth financial interactions.
-Security Concerns to Address
-Private Key Handling:
-
-Ensure that private keys are encrypted using robust algorithms (e.g., AES).
-Avoid storing private keys directly in your database; consider using hardware security modules (HSMs) or secure environments like AWS KMS.
-Authentication:
-
-Use strong token validation (e.g., JWT with expiration) to prevent unauthorized access.
-Implement rate limiting to prevent abuse.
-Server Security:
-
-Secure the backend API (e.g., /api/v1/tnx/sign) with HTTPS and other best practices.
-Limit Access:
-
-Restrict SolBot's permissions to only allow transaction signing, not unrestricted private key access.
-What You’ve Achieved
-By creating SolBot, you've taken a significant step towards simplifying user interaction with Solana. It’s a great addition for crypto projects, especially for use cases like:
-
-Payment gateways.
-In-app purchases.
-Automated staking or rewards.
+## Installation 🔧
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/yourusername/solbot.git
+   cd solbot
