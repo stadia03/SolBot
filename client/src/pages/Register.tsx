@@ -1,13 +1,16 @@
 import axios from 'axios';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Register() {
+  const [loading, setloading] = useState(false);
 
   async function handleRegister() {
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
     const privateKey = (document.getElementById('pvtKey') as HTMLInputElement).value;
+    setloading(true);
     try {
       const response = await axios.post('https://sol-bot-lake.vercel.app/auth/signup', {
         username,
@@ -28,6 +31,7 @@ export default function Register() {
         alert('Error creating user');
       }
     } catch (error: any) {
+      console.log(error);
       // Check if the error response contains data with an error message
       if (error.response && error.response.data && error.response.data.error) {
         alert(error.response.data.error); // This will show "User already exists"
@@ -35,6 +39,9 @@ export default function Register() {
         console.error('Error creating user', error);
         alert('An error occurred while creating the user');
       }
+    }
+    finally{
+      setloading(false);
     }
   }
 
@@ -90,9 +97,21 @@ export default function Register() {
           </button>
         </div>
       <div className="my-2">
-      <button onClick={handleRegister} className="border border-gray-500 rounded-md px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none">
+        {loading? (
+          <div className="flex items-center">
+          <img
+            src="/assets/loading.svg"
+            alt="Loading..."
+            // className="w-5 h-5 animate-spin mr-2" // Added mr-2 for spacing if needed
+            style={{ width: '30px', height: '30px' }} // Ensure consistent size
+          />
+        </div>
+        ):(
+          <button onClick={handleRegister} className="border border-gray-500 rounded-md px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none">
         Register
       </button>
+        )}
+      
       </div>
 
       <p className="my-10">

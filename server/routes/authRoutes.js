@@ -12,6 +12,7 @@ router.post('/test', async(req,res)=>{
 })
 
 router.post('/signup', async(req,res)=>{
+
   const {username,email, password,privateKey} = req.body;
   // console.log("reached signup", username, password, email,);
   try{
@@ -26,10 +27,12 @@ router.post('/signup', async(req,res)=>{
     //saving the private key
     // console.log("from signup",privateKey);
     const keyMap = new KeyMap({email , privateKey });
-    await keyMap.save();
+     await keyMap.save();
+
     res.status(201).json({message : "User created successfully"});
   }
   catch(error){
+    console.log(error);
     res.status(500).json({error : 'Error creating user'});
   }});
 

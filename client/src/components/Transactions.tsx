@@ -8,19 +8,25 @@ import {
 import { useUserStore } from "../store";
 
 import axios from "axios";
+import { useState } from "react";
 
 const connection = new Connection(
   "https://solana-devnet.g.alchemy.com/v2/DZHbnZioln7-ITlLrhFgZZlcSSiP3yan"
 );
 
 export default function Transactions() {
+
+  const [loading , setloading] = useState(false);
+
   async function sendTnx() {
     // const privateKey= bs58.decode(useUserStore.getState().publicKey);
 
     // const keypair = Keypair.from(privateKey);
 
     // console.log(keypair.publicKey);
+    try{
 
+    setloading(true);
     const userPublickey = new PublicKey(useUserStore.getState().publicKey);
     // console.log(userPublickey);
     const ix = SystemProgram.transfer({
@@ -61,6 +67,13 @@ export default function Transactions() {
     // console.log("frontend res",response);
     alert(`Transaction confirmed!  ${response.data.signature.signature}`);
   }
+  catch(error){
+    console.log(error);
+  }
+  finally{
+    setloading(false);
+  }
+  }
   return (
     <>
     <div className="flex flex-col h-96  items-center ">
@@ -97,9 +110,21 @@ export default function Transactions() {
       </div>
 
       <div className="my-2">
-      <button onClick={sendTnx} className="border border-gray-500 rounded-md px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none">
+        {loading?(
+          <div className="flex items-center">
+          <img
+            src="/assets/loading.svg"
+            alt="Loading..."
+            // className="w-5 h-5 animate-spin mr-2" // Added mr-2 for spacing if needed
+            style={{ width: '30px', height: '30px' }} // Ensure consistent size
+          />
+        </div>
+        ):(
+           <button onClick={sendTnx} className="border border-gray-500 rounded-md px-4 py-2 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none">
         Send
       </button>
+        )}
+     
       </div>
 
       </div>

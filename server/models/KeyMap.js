@@ -8,7 +8,7 @@ const keyMapSchema = new mongoose.Schema({
   },
   privateKey : {
     type : String,
-    unique : true,
+   
     required : true
   }
 });
