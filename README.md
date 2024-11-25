@@ -3,6 +3,7 @@
 
 
 LIVE LINK: https://solbot-two.vercel.app/
+
 A bot that simplifies transactions on the Solana blockchain by signing transactions on behalf of users. With SolBot, users can send SOL effortlessly without manually signing transactions every time.
 
 ---
